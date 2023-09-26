@@ -13,7 +13,7 @@ describe('Проверка Todo-List', () => {
       
         cy.contains('Submit').click();
       }
-      
+
       cy.get('.inner')
         .find('li')
         .should('have.length', elementCount);
@@ -22,12 +22,12 @@ describe('Проверка Todo-List', () => {
         .find('li')
         .eq(elementChanged)
         .as('elementChanged')
+        .find('input').click();
       
-      cy.get('@elementChanged').click()
+      cy.get('@elementChanged')
+        .find('span')
+        .invoke('css', 'text-decoration')
+        .should('include', 'line-through');
     })
-
-    // it('sdfsdf', () => {
-      
-    // })
   })
 })
